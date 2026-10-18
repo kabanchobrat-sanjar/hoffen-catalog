@@ -83,15 +83,7 @@
        1. LOGIN OVERLAY & CARD
        =================================================================== */
     #loginSection {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(14, 18, 24, 0.94);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none !important;
     }
 
     .login-box {
@@ -261,7 +253,7 @@
        2. DASHBOARD VIEW (AUTHENTICATED)
        =================================================================== */
     #dashboardSection {
-      display: none;
+      display: block;
       position: relative;
       z-index: 1;
       padding-bottom: 80px;
@@ -2450,7 +2442,7 @@
   <!-- ===================================================================
        1. LOGIN OVERLAY
        =================================================================== -->
-  <section id="loginSection">
+  <section id="loginSection" style="display: none !important;">
     <div class="login-box">
       <img src="assets/images/hoffen_official_logo.png" alt="HOFFEN 1" class="login-logo" style="height: 52px; width: auto; object-fit: contain;">
       
@@ -2508,9 +2500,9 @@
   </section>
 
   <!-- ===================================================================
-       2. ADMIN DASHBOARD (Faqat Parol to'g'ri bo'lganda ochiladi)
+       2. ADMIN DASHBOARD (To'g'ridan-to'g'ri ochiq)
        =================================================================== -->
-  <section id="dashboardSection">
+  <section id="dashboardSection" style="display: block;">
     
     <!-- Admin Top Navbar -->
     <nav class="admin-navbar">
@@ -2535,9 +2527,9 @@
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <span>Katalogni Ko'rish</span>
           </a>
-          <button class="btn-logout" onclick="handleLogout()">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            <span>Chiqish</span>
+          <button class="btn-logout" onclick="window.location.href='index.html'" title="Katalogga o'tish">
+            <i class="fa-solid fa-store"></i>
+            <span>Katalog</span>
           </button>
         </div>
       </div>
@@ -3383,59 +3375,22 @@
       }
     }
 
-    // Check Authentication on Page Load
+    // Check Authentication on Page Load - To'g'ridan-to'g'ri ochiq (Parolsiz)
     async function checkAuthOnLoad() {
-      // Ensure input always has default password 196164
-      if (passwordInput && !passwordInput.value) {
-        passwordInput.value = '196164';
-      }
-
-      if (!authToken) {
-        showLoginView();
-        return;
-      }
-
-      if (authToken === 'master_hoffen_196164_admin') {
-        showDashboardView();
-        await fetchPricesFromServer();
-        return;
-      }
-
-      try {
-        const res = await fetch(`${API_BASE}/api/verify`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token: authToken })
-        });
-        const data = await res.json();
-        if (data.valid) {
-          showDashboardView();
-          await fetchPricesFromServer();
-        } else {
-          sessionStorage.removeItem('hoffen_admin_token');
-          localStorage.removeItem('hoffen_admin_token');
-          authToken = '';
-          showLoginView();
-        }
-      } catch (err) {
-        console.warn('Server bilan bog\'lanishda xatolik:', err);
-        showDashboardView();
-        try { await fetchPricesFromServer(); } catch(e) {}
-      }
+      authToken = 'master_hoffen_196164_admin';
+      sessionStorage.setItem('hoffen_admin_token', authToken);
+      localStorage.setItem('hoffen_admin_token', authToken);
+      showDashboardView();
+      await fetchPricesFromServer();
     }
 
     function showLoginView() {
-      loginSection.style.display = 'flex';
-      dashboardSection.style.display = 'none';
-      if (passwordInput) {
-        if (!passwordInput.value) passwordInput.value = '196164';
-        passwordInput.focus();
-      }
+      showDashboardView();
     }
 
     function showDashboardView() {
-      loginSection.style.display = 'none';
-      dashboardSection.style.display = 'block';
+      if (loginSection) loginSection.style.display = 'none';
+      if (dashboardSection) dashboardSection.style.display = 'block';
     }
 
     function quickLogin196164() {
@@ -3514,21 +3469,8 @@
     }
 
     // Handle Logout
-    async function handleLogout() {
-      if (confirm("Haqiqatan ham administrator panelidan chiqmoqchimisiz?")) {
-        try {
-          await fetch(`${API_BASE}/api/logout`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: authToken })
-          });
-        } catch (e) {}
-        sessionStorage.removeItem('hoffen_admin_token');
-        localStorage.removeItem('hoffen_admin_token');
-        authToken = '';
-        showLoginView();
-        showToast("Tizimdan chiqildi.");
-      }
+    function handleLogout() {
+      window.location.href = 'index.html';
     }
 
     // Fetch Prices & Data from Server

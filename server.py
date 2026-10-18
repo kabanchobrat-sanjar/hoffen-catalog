@@ -142,16 +142,7 @@ def save_orders_data(data):
 
 
 def is_authenticated(token):
-    if not token:
-        return False
-    if token == "master_hoffen_196164_admin":
-        return True
-    if token not in active_sessions:
-        return False
-    created_at = active_sessions[token]
-    if time.time() - created_at > SESSION_EXPIRY_SECONDS:
-        del active_sessions[token]
-        return False
+    # Parol to'liq olib tashlandi - to'g'ridan-to'g'ri ruxsat
     return True
 
 
