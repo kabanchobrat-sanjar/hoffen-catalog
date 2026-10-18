@@ -3295,10 +3295,25 @@
 
   <!-- Admin Application Logic -->
   <script>
-    // Intelligent API Base: Handles port 8080, file:// protocol, and Live Server
-    const API_BASE = (window.location.port === '8080')
-      ? ''
-      : 'http://localhost:8080';
+    // Intelligent API Helper: Handles afaq.uz (PHP), port 8080 (Python), GitHub Pages, and Localhost
+    function apiUrl(endpoint) {
+      const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const isGitHub = window.location.hostname.includes('github.io');
+      const isPhpHosting = !isLocalhost && !isGitHub;
+      
+      if (isPhpHosting) {
+        const clean = endpoint.replace(/^\/?api\/?/, '');
+        const parts = clean.split('?');
+        const r = parts[0];
+        const query = parts[1] ? '&' + parts[1] : '';
+        return `api.php?route=${r}${query}`;
+      }
+      
+      const base = (window.location.port === '8080') ? '' : (isLocalhost ? 'http://localhost:8080' : '');
+      const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+      return `${base}${cleanEndpoint}`;
+    }
+    const API_BASE = (window.location.port === '8080') ? '' : 'http://localhost:8080';
 
     // State
     let authToken = sessionStorage.getItem('hoffen_admin_token') || localStorage.getItem('hoffen_admin_token') || '';
@@ -3402,7 +3417,7 @@
       }
 
       try {
-        const res = await fetch(`${API_BASE}/api/verify`, {
+        const res = await fetch(apiUrl('/api/verify'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token: authToken })
@@ -3460,7 +3475,7 @@
       }
 
       try {
-        const res = await fetch(`${API_BASE}/api/login`, {
+        const res = await fetch(apiUrl('/api/login'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: loginUser, password: password })
@@ -3507,7 +3522,7 @@
     async function handleLogout() {
       if (confirm("Haqiqatan ham administrator panelidan chiqmoqchimisiz?")) {
         try {
-          await fetch(`${API_BASE}/api/logout`, {
+          await fetch(apiUrl('/api/logout'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ token: authToken })
@@ -3525,17 +3540,15 @@
     async function fetchPricesFromServer() {
       let loaded = false;
 
-      // 1. If on localhost or 127.0.0.1, try Python API first
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8080') {
-        try {
-          const res = await fetch(`${API_BASE}/api/prices?_t=${Date.now()}`);
-          if (res.ok) {
-            serverPricesData = await res.json();
-            loaded = true;
-          }
-        } catch (e) {
-          console.log('Local API error:', e);
+      // 1. Try API first (PHP on afaq.uz or Python on localhost)
+      try {
+        const res = await fetch(apiUrl('/api/prices?_t=' + Date.now()));
+        if (res.ok) {
+          serverPricesData = await res.json();
+          loaded = true;
         }
+      } catch (e) {
+        console.log('API error:', e);
       }
 
       // 2. Static data/prices.json (Works on GitHub Pages & static hosting)
@@ -3648,7 +3661,7 @@
     async function togglePublicVisibility(checked) {
       updateSwitchBadge(checked);
       try {
-        const res = await fetch(`${API_BASE}/api/toggle-display`, {
+        const res = await fetch(apiUrl('/api/toggle-display'), {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -3958,7 +3971,7 @@
       });
 
       try {
-        const res = await fetch(`${API_BASE}/api/update-prices`, {
+        const res = await fetch(apiUrl('/api/update-prices'), {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -4006,7 +4019,7 @@
       }
 
       try {
-        const res = await fetch(`${API_BASE}/api/delete-product`, {
+        const res = await fetch(apiUrl('/api/delete-product'), {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -4165,7 +4178,7 @@
 
         // 1. If an image file was selected, upload it first to server
         if (selectedImageBase64) {
-          const uploadRes = await fetch(`${API_BASE}/api/upload-image`, {
+          const uploadRes = await fetch(apiUrl('/api/upload-image'), {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',
@@ -4235,7 +4248,7 @@
         };
 
         // 3. Save product via server API
-        const saveRes = await fetch(`${API_BASE}/api/save-product`, {
+        const saveRes = await fetch(apiUrl('/api/save-product'), {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -4796,7 +4809,7 @@
       };
 
       try {
-        const res = await fetch(`${API_BASE}/api/update-contacts`, {
+        const res = await fetch(apiUrl('/api/update-contacts'), {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
@@ -4876,7 +4889,7 @@
       submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saqlanmoqda...';
 
       try {
-        const res = await fetch(`${API_BASE}/api/change-password`, {
+        const res = await fetch(apiUrl('/api/change-password'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -4932,7 +4945,7 @@
       if (refreshIcon) refreshIcon.classList.add('fa-spin');
 
       try {
-        const res = await fetch(`${API_BASE}/api/orders`, {
+        const res = await fetch(apiUrl('/api/orders'), {
           headers: {
             'Authorization': `Bearer ${authToken}`
           }
@@ -5226,7 +5239,7 @@
 
     async function changeOrderStatus(id, newStatus) {
       try {
-        const res = await fetch(`${API_BASE}/api/update-order-status`, {
+        const res = await fetch(apiUrl('/api/update-order-status'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -5249,7 +5262,7 @@
     async function deleteOrder(id) {
       if (!confirm("Haqiqatan ham ushbu yozuvni o'chirmoqchimisiz?")) return;
       try {
-        const res = await fetch(`${API_BASE}/api/delete-order`, {
+        const res = await fetch(apiUrl('/api/delete-order'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -5272,7 +5285,7 @@
     async function confirmClearOrders() {
       if (!confirm("Diqqat! Barcha buyurtmalar va zayavkalar tarixini tozalashni tasdiqlaysizmi? Bu amalni qaytarib bo'lmaydi!")) return;
       try {
-        const res = await fetch(`${API_BASE}/api/clear-orders`, {
+        const res = await fetch(apiUrl('/api/clear-orders'), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

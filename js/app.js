@@ -2,10 +2,24 @@
 // Pure Modern JavaScript (ES6+)
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Intelligent API Base: Supports port 8080, file:// protocol, and Live Server
-  const API_BASE = (window.location.port === '8080')
-    ? ''
-    : 'http://localhost:8080';
+  // Intelligent API Helper: Supports afaq.uz (PHP), port 8080 (Python), GitHub Pages, and Localhost
+  function apiUrl(endpoint) {
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const isGitHub = window.location.hostname.includes('github.io');
+    const isPhpHosting = !isLocalhost && !isGitHub;
+    
+    if (isPhpHosting) {
+      const clean = endpoint.replace(/^\/?api\/?/, '');
+      const parts = clean.split('?');
+      const r = parts[0];
+      const query = parts[1] ? '&' + parts[1] : '';
+      return `api.php?route=${r}${query}`;
+    }
+    
+    const base = (window.location.port === '8080') ? '' : (isLocalhost ? 'http://localhost:8080' : '');
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    return `${base}${cleanEndpoint}`;
+  }
 
   // State
   let currentLang = localStorage.getItem('hoffen_lang') || 'uz';
@@ -237,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load prices dynamically from Python Server or static data/prices.json on GitHub Pages
   async function loadServerPrices() {
     try {
-      const res = await fetch(`${API_BASE}/api/prices?_t=${Date.now()}`, { cache: 'no-store' });
+      const res = await fetch(apiUrl('/api/prices?_t=' + Date.now()), { cache: 'no-store' });
       if (res.ok) {
         serverPrices = await res.json();
         applyServerPricesToData(serverPrices);
@@ -1636,7 +1650,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        fetch(`${API_BASE}/api/create-order`, {
+        fetch(apiUrl('/api/create-order'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(orderPayload)
@@ -1669,7 +1683,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const { target, targetName, targetPhone, context, url } = pendingTgData;
     
     try {
-      fetch(`${API_BASE}/api/track-telegram`, {
+      fetch(apiUrl('/api/track-telegram'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1712,7 +1726,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const { target, targetName, targetPhone, context, url } = pendingTgData;
 
     try {
-      fetch(`${API_BASE}/api/track-telegram`, {
+      fetch(apiUrl('/api/track-telegram'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1772,7 +1786,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (savedPhone && savedPhone.length >= 7) {
       try {
-        fetch(`${API_BASE}/api/track-telegram`, {
+        fetch(apiUrl('/api/track-telegram'), {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1846,7 +1860,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const res = await fetch(`${API_BASE}/api/create-inquiry`, {
+      const res = await fetch(apiUrl('/api/create-inquiry'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

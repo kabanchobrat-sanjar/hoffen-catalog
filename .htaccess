@@ -1,0 +1,26 @@
+# HOFFEN 1 - Apache / Plesk rewrite rules
+RewriteEngine On
+RewriteBase /
+
+# Route all /api/ requests to api.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ api.php?route=$1 [QSA,L]
+RewriteRule ^api$ api.php [QSA,L]
+
+# Clean admin URL
+RewriteRule ^admin$ admin.html [L]
+RewriteRule ^admin/$ admin.html [L]
+
+# Disable directory browsing
+Options -Indexes
+
+# Security: Protect data/*.json sensitive files from direct download if needed
+<Files "config.json">
+    Order allow,deny
+    Deny from all
+</Files>
+<Files "orders.json">
+    Order allow,deny
+    Deny from all
+</Files>
