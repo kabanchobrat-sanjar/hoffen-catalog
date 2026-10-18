@@ -3381,6 +3381,9 @@
       sessionStorage.setItem('hoffen_admin_token', authToken);
       localStorage.setItem('hoffen_admin_token', authToken);
       showDashboardView();
+      // Darhol barcha mahsulotlar va kontaktlarni ko'rsatamiz (kutib o'tirmasdan)
+      try { renderProductsList(); } catch(e) {}
+      try { renderContactsUI(); } catch(e) {}
       await fetchPricesFromServer();
     }
 
@@ -3473,17 +3476,67 @@
       window.location.href = 'index.html';
     }
 
-    // Fetch Prices & Data from Server
+    // Fetch Prices & Data from Server (with GitHub Pages static fallback)
     async function fetchPricesFromServer() {
-      try {
-        const res = await fetch(`${API_BASE}/api/prices`);
-        serverPricesData = await res.json();
+      let loaded = false;
 
-        // Update toggle state
+      // 1. If on localhost or 127.0.0.1, try Python API first
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port === '8080') {
+        try {
+          const res = await fetch(`${API_BASE}/api/prices?_t=${Date.now()}`);
+          if (res.ok) {
+            serverPricesData = await res.json();
+            loaded = true;
+          }
+        } catch (e) {
+          console.log('Local API error:', e);
+        }
+      }
+
+      // 2. Static data/prices.json (Works on GitHub Pages & static hosting)
+      if (!loaded) {
+        try {
+          const staticRes = await fetch(`data/prices.json?_t=${Date.now()}`);
+          if (staticRes.ok) {
+            serverPricesData = await staticRes.json();
+            loaded = true;
+          }
+        } catch (e) {
+          console.log('Static prices.json error:', e);
+        }
+      }
+
+      // 3. LocalStorage cache fallback
+      if (!loaded) {
+        try {
+          const cached = localStorage.getItem('hoffen_server_prices_cache');
+          if (cached) {
+            serverPricesData = JSON.parse(cached);
+            loaded = true;
+          }
+        } catch (e) {}
+      }
+
+      // Cache the loaded data
+      if (loaded && serverPricesData) {
+        try {
+          localStorage.setItem('hoffen_server_prices_cache', JSON.stringify(serverPricesData));
+        } catch (e) {}
+      }
+
+      // Ensure contacts structure
+      if (!serverPricesData.contacts) {
+        serverPricesData.contacts = (HOFFEN_DATA && HOFFEN_DATA.company) ? HOFFEN_DATA.company : {};
+      }
+
+      // Update toggle state
+      if (publicVisibilityToggle) {
         publicVisibilityToggle.checked = Boolean(serverPricesData.show_prices_public);
-        updateSwitchBadge(serverPricesData.show_prices_public);
+      }
+      updateSwitchBadge(serverPricesData.show_prices_public);
 
-        // Update last updated info
+      // Update last updated info
+      if (lastUpdatedVal) {
         if (serverPricesData.last_updated) {
           const date = new Date(serverPricesData.last_updated);
           lastUpdatedVal.textContent = date.toLocaleDateString('uz-UZ', { 
@@ -3492,17 +3545,17 @@
         } else {
           lastUpdatedVal.textContent = 'Bugun';
         }
-
-        // Synchronize products array with custom & deleted
-        synchronizeProductsList();
-
-        // Render UI
-        renderProductsList();
-        renderContactsUI();
-        fetchOrdersFromServer();
-      } catch (err) {
-        showToast("Ma'lumotlarni yuklashda server xatoligi yuz berdi!", true);
       }
+
+      // Synchronize products array with custom & deleted
+      synchronizeProductsList();
+
+      // Render UI
+      renderProductsList();
+      renderContactsUI();
+      try {
+        fetchOrdersFromServer();
+      } catch (e) {}
     }
 
     function synchronizeProductsList() {
