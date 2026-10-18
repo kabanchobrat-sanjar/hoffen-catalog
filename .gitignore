@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.log
+
+# Sensitive credentials & customer data
+data/config.json
+data/orders.json
+
+# Environment / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch & temporary previews
+scratch/
+scratch_*.py
+login_preview.png

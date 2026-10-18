@@ -1,0 +1,757 @@
+{
+  "show_prices_public": true,
+  "currency": "UZS",
+  "last_updated": "2026-10-19T00:22:41.363217",
+  "updated_by": "Admin",
+  "contacts": {
+    "primary_phone": "+998 97 407 00 64",
+    "primary_tg": "Hoffen0064",
+    "hr_phone": "+998 77 488 00 64",
+    "hr_tg": "Hoffen1_HR",
+    "representatives": [
+      {
+        "id": "rep_tashkent_city",
+        "name": "Toshkent Shahri Savdo Bo'limi",
+        "phone": "+998 77 488 00 64",
+        "tg": "Hoffen1_HR",
+        "role": "Toshkent shahri (12 ta tuman)"
+      },
+      {
+        "id": "rep_dilshod",
+        "name": "Dilshod",
+        "phone": "+998 77 011 00 64",
+        "tg": "HOFFEN1_DILSHOD",
+        "role": "Chirchiq — Bo'stonliq yo'nalishi"
+      },
+      {
+        "id": "rep_shoxrux",
+        "name": "Shohruh",
+        "phone": "+998 99 435 00 64",
+        "tg": "HOFFEN1_SHOXRUX",
+        "role": "Parkent — Pskent yo'nalishi"
+      },
+      {
+        "id": "rep_muhtorjon",
+        "name": "Muhtorjon",
+        "phone": "+998 95 520 00 64",
+        "tg": "HOFFEN1_MUHTORJON",
+        "role": "Angren — Olmaliq yo'nalishi"
+      },
+      {
+        "id": "rep_faxriddin",
+        "name": "Faxriddin",
+        "phone": "+998 95 551 00 64",
+        "tg": "Hoffen1_Faxriddin",
+        "role": "Yangiyo'l — Chinoz yo'nalishi"
+      },
+      {
+        "id": "rep_zangiota",
+        "name": "Savdo bo'limi",
+        "phone": "+998 95 094 00 64",
+        "tg": "Hoffen0064",
+        "role": "Zangiota — Keles yo'nalishi"
+      },
+      {
+        "id": "rep_markaziy",
+        "name": "Markaziy Savdo & Logistika Filiali",
+        "phone": "+998 97 407 00 64",
+        "tg": "Hoffen0064",
+        "role": "Respublika viloyatlari"
+      }
+    ],
+    "districts": [
+      {
+        "id": "chilonzor",
+        "name_uz": "Chilonzor tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "yunusobod",
+        "name_uz": "Yunusobod tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "mirzo_ulugbek",
+        "name_uz": "Mirzo Ulug'bek tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "mirobod",
+        "name_uz": "Mirobod tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "yakkasaroy",
+        "name_uz": "Yakkasaroy tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "shayxontohur",
+        "name_uz": "Shayxontohur tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "olmazor",
+        "name_uz": "Olmazor tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "uchtepa",
+        "name_uz": "Uchtepa tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "sergeli",
+        "name_uz": "Sergeli tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "yangihayot",
+        "name_uz": "Yangihayot tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "yashnobod",
+        "name_uz": "Yashnobod tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "bektemir",
+        "name_uz": "Bektemir tumani",
+        "category": "tashkent_city",
+        "rep_id": "rep_tashkent_city"
+      },
+      {
+        "id": "chirchiq",
+        "name_uz": "Chirchiq shahri",
+        "category": "tashkent_region",
+        "rep_id": "rep_dilshod",
+        "zone": "Chirchiq — Bo'stonliq Yo'nalishi"
+      },
+      {
+        "id": "qibray",
+        "name_uz": "Qibray tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_dilshod",
+        "zone": "Chirchiq — Bo'stonliq Yo'nalishi"
+      },
+      {
+        "id": "gazalkent",
+        "name_uz": "G'azalkent shahri",
+        "category": "tashkent_region",
+        "rep_id": "rep_dilshod",
+        "zone": "Chirchiq — Bo'stonliq Yo'nalishi"
+      },
+      {
+        "id": "bostonliq",
+        "name_uz": "Bo'stonliq tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_dilshod",
+        "zone": "Chirchiq — Bo'stonliq Yo'nalishi"
+      },
+      {
+        "id": "parkent",
+        "name_uz": "Parkent tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_shoxrux",
+        "zone": "Parkent — Pskent Yo'nalishi"
+      },
+      {
+        "id": "pskent",
+        "name_uz": "Pskent tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_shoxrux",
+        "zone": "Parkent — Pskent Yo'nalishi"
+      },
+      {
+        "id": "toytepa",
+        "name_uz": "To'ytepa (Nurafshon)",
+        "category": "tashkent_region",
+        "rep_id": "rep_shoxrux",
+        "zone": "Parkent — Pskent Yo'nalishi"
+      },
+      {
+        "id": "bektemir_vil",
+        "name_uz": "Bektemir (viloyat qismi)",
+        "category": "tashkent_region",
+        "rep_id": "rep_shoxrux",
+        "zone": "Parkent — Pskent Yo'nalishi"
+      },
+      {
+        "id": "angren",
+        "name_uz": "Angren shahri",
+        "category": "tashkent_region",
+        "rep_id": "rep_muhtorjon",
+        "zone": "Angren — Olmaliq Yo'nalishi"
+      },
+      {
+        "id": "ohangaron",
+        "name_uz": "Ohangaron tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_muhtorjon",
+        "zone": "Angren — Olmaliq Yo'nalishi"
+      },
+      {
+        "id": "olmaliq",
+        "name_uz": "Olmaliq shahri",
+        "category": "tashkent_region",
+        "rep_id": "rep_muhtorjon",
+        "zone": "Angren — Olmaliq Yo'nalishi"
+      },
+      {
+        "id": "yangiyol",
+        "name_uz": "Yangiyo'l tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_faxriddin",
+        "zone": "Yangiyo'l — Chinoz Yo'nalishi"
+      },
+      {
+        "id": "chinoz",
+        "name_uz": "Chinoz tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_faxriddin",
+        "zone": "Yangiyo'l — Chinoz Yo'nalishi"
+      },
+      {
+        "id": "zangiota",
+        "name_uz": "Zangiota tumani",
+        "category": "tashkent_region",
+        "rep_id": "rep_zangiota",
+        "zone": "Zangiota — Keles Yo'nalishi"
+      },
+      {
+        "id": "keles",
+        "name_uz": "Keles shahri",
+        "category": "tashkent_region",
+        "rep_id": "rep_zangiota",
+        "zone": "Zangiota — Keles Yo'nalishi"
+      },
+      {
+        "id": "samarqand",
+        "name_uz": "Samarqand viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "fargona",
+        "name_uz": "Farg'ona viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "andijon",
+        "name_uz": "Andijon viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "namangan",
+        "name_uz": "Namangan viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "buxoro",
+        "name_uz": "Buxoro viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "qashqadaryo",
+        "name_uz": "Qashqadaryo viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "surxondaryo",
+        "name_uz": "Surxondaryo viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "xorazm",
+        "name_uz": "Xorazm viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "navoiy",
+        "name_uz": "Navoiy viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "jizzax",
+        "name_uz": "Jizzax viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "sirdaryo",
+        "name_uz": "Sirdaryo viloyati",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      },
+      {
+        "id": "qoraqalpogiston",
+        "name_uz": "Qoraqalpog'iston Respublikasi",
+        "category": "other_regions",
+        "rep_id": "rep_markaziy"
+      }
+    ],
+    "regionalReps": [
+      {
+        "id": "rep_1",
+        "region_uz": "Angren, Ohangaron, Olmaliq",
+        "region_ru": "Ангрен, Ахангаран, Алмалык",
+        "rep": "Muhtorjon",
+        "phone": "+998 95 520 00 64",
+        "tg": "HOFFEN1_MUHTORJON"
+      },
+      {
+        "id": "rep_2",
+        "region_uz": "Parkent, To'ytepa, Pskent, Bektemir",
+        "region_ru": "Паркент, Тойтепа, Пскент, Бектемир",
+        "rep": "Shohruh",
+        "phone": "+998 99 435 00 64",
+        "tg": "HOFFEN1_SHOXRUX"
+      },
+      {
+        "id": "rep_3",
+        "region_uz": "Chirchiq, Qibray, G'azalkent, Bo'stonliq",
+        "region_ru": "Чирчик, Кибрай, Газалкент, Бостанлык",
+        "rep": "Dilshod",
+        "phone": "+998 77 011 00 64",
+        "tg": "HOFFEN1_DILSHOD"
+      },
+      {
+        "id": "rep_4",
+        "region_uz": "Yangiyo'l, Chinoz",
+        "region_ru": "Янгиюль, Чиназ",
+        "rep": "Faxriddin",
+        "phone": "+998 95 551 00 64",
+        "tg": "Hoffen1_Faxriddin"
+      },
+      {
+        "id": "rep_5",
+        "region_uz": "Zangiota, Keles",
+        "region_ru": "Зангиата, Келес",
+        "rep": "Savdo bo'limi",
+        "phone": "+998 95 094 00 64",
+        "tg": "Hoffen0064"
+      }
+    ]
+  },
+  "custom_products": [],
+  "deleted_product_ids": [],
+  "products": {
+    "shampoo-01-super-pena": {
+      "base_price": "0",
+      "volumes": {
+        "1 L": "35 000",
+        "5 kg": "0",
+        "20 kg": "480 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-magic-77": {
+      "base_price": "50 000",
+      "volumes": {
+        "1 L": "50 000",
+        "5 kg": "160 000",
+        "20 kg": "580 000",
+        "20 kg MEGIC (Bubblegum Aroma)": "630 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-09-nano": {
+      "base_price": "65 000",
+      "volumes": {
+        "1 L": "35 000",
+        "5 kg": "230 000",
+        "20 kg": "900 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-05-active-foam": {
+      "base_price": "500 000",
+      "volumes": {
+        "1 L": "32 000",
+        "5 kg": "140 000",
+        "20 kg": "500 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-06-active-foam": {
+      "base_price": "500 000",
+      "volumes": {
+        "1 L": "35 000",
+        "5 kg": "150 000",
+        "20 kg": "500 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-07-red-foam": {
+      "base_price": "550 000",
+      "volumes": {
+        "1 L": "35 000",
+        "5 kg": "150 000",
+        "20 kg": "550 000"
+      },
+      "in_stock": true
+    },
+    "shampoo-manual-1l": {
+      "base_price": "22 000",
+      "volumes": {
+        "1L BABL GAM (автошампунь ручной)": "22 000",
+        "1L OKEAN (автошампунь ручной)": "22 000"
+      },
+      "in_stock": true
+    },
+    "rubber-blacker-450ml": {
+      "base_price": "75000",
+      "volumes": {
+        "450 ml": "16 000",
+        "5 kg": "75000",
+        "20 kg": "245 000"
+      },
+      "in_stock": true
+    },
+    "glass-cleaner-500ml": {
+      "base_price": "14 000",
+      "volumes": {
+        "500 ml": "14 000",
+        "500 ml Trigger Sprey": "14 000"
+      },
+      "in_stock": true
+    },
+    "polyrole-shine-450ml": {
+      "base_price": "16 000",
+      "volumes": {
+        "450 ml": "16 000",
+        "450 ml Trigger Sprey": "16 000"
+      },
+      "in_stock": true
+    },
+    "polyrole-matte-450ml": {
+      "base_price": "16 000",
+      "volumes": {
+        "450 ml": "16 000",
+        "450 ml Trigger Sprey": "16 000"
+      },
+      "in_stock": true
+    },
+    "motor-cleaner-500ml": {
+      "base_price": "17 000",
+      "volumes": {
+        "500 ml": "17 000",
+        "5 kg": "100 000"
+      },
+      "in_stock": true
+    },
+    "wheel-disc-cleaner-500ml": {
+      "base_price": "16 000",
+      "volumes": {
+        "500 ml": "16 000"
+      },
+      "in_stock": true
+    },
+    "wax-08-super-wax": {
+      "base_price": "16 000",
+      "volumes": {
+        "450 ml": "16 000",
+        "1 L": "45 000",
+        "5 kg": "220 000",
+        "20 kg": "800 000"
+      },
+      "in_stock": true
+    },
+    "dry-fog-apparatus-liquids": {
+      "base_price": "195 000",
+      "volumes": {
+        "1 kg suyuqlik": "195 000",
+        "Involight FM900 Generator": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "air-freshener-100ml-box": {
+      "base_price": "10 000",
+      "volumes": {
+        "100 ml (dona)": "10 000",
+        "Showbox (16 dona)": "160 000"
+      },
+      "in_stock": true
+    },
+    "car-perfume-7g-bottle": {
+      "base_price": "15 000",
+      "volumes": {
+        "7 gr flakon": "15 000"
+      },
+      "in_stock": true
+    },
+    "car-perfume-cardboard-10x": {
+      "base_price": "8 000",
+      "volumes": {
+        "1 dona blister": "8 000"
+      },
+      "in_stock": true
+    },
+    "room-freshener-spray-375ml": {
+      "base_price": "18 000",
+      "volumes": {
+        "375 ml sprey": "18 000"
+      },
+      "in_stock": true
+    },
+    "cloth-microfiber-set": {
+      "base_price": "11 000",
+      "volumes": {
+        "40/30 sm": "11 000",
+        "60/30 sm": "12 000",
+        "(GUFF) 40/60": "30 000",
+        "(GUFF) 50/70": "35 000",
+        "(GUFF) 60/80": "50 000"
+      },
+      "in_stock": true
+    },
+    "cloth-guff-set": {
+      "base_price": "25 000",
+      "volumes": {
+        "60x40 sm": "25 000",
+        "50x70 sm": "30 000"
+      },
+      "in_stock": true
+    },
+    "car-paper-mats": {
+      "base_price": "225 000",
+      "volumes": {
+        "500 шт": "225 000"
+      },
+      "in_stock": true
+    },
+    "home-anti-fat-500ml": {
+      "base_price": "18 000",
+      "volumes": {
+        "Super 500 ml": "18 000",
+        "EcoClean 500 ml": "18 000"
+      },
+      "in_stock": true
+    },
+    "home-dish-gel-apple": {
+      "base_price": "12 000",
+      "volumes": {
+        "150 ml": "12 000",
+        "200 ml": "15 000",
+        "300 ml": "18 000",
+        "400 ml": "22 000",
+        "1 kg": "45 000"
+      },
+      "in_stock": true
+    },
+    "antifreeze-graff-anamal": {
+      "base_price": "16 000",
+      "volumes": {
+        "-40 KO'K 1 kg": "16 000",
+        "-40 QIZIL 1 kg": "16 500",
+        "-40 KO'K 5 kg": "78 000",
+        "-40 QIZIL 5 kg": "80 000",
+        "-40 KO'K 10 kg": "0",
+        "-40 QIZIL 10 kg": "0",
+        "-40 KO'K 20 kg": "0",
+        "-40 QIZIL 20 kg": "0",
+        "200 kg (bochka)": "0"
+      },
+      "in_stock": true
+    },
+    "nezamerzayka-graff-super-aroma": {
+      "base_price": "18 000",
+      "volumes": {
+        "-5°C (1 Litr)": "18 000",
+        "-20°C (2.5 Litr)": "38 000",
+        "-20°C (5 Litr)": "65 000"
+      },
+      "in_stock": true
+    },
+    "disc-cleaner-500ml": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "500 ml Trigger Sprey": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "antifreeze-graff-group": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "1 kg": "Kelishilgan",
+        "5 kg": "Kelishilgan",
+        "20 kg": "Kelishilgan",
+        "200 kg Bochka": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "nezamerzayka-graff-group": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "-5°C (1 Litr)": "Kelishilgan",
+        "-20°C (2.5 Litr)": "Kelishilgan",
+        "-20°C (5 Litr)": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "dry-fog-machine-bottles": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "1 kg Flakon": "Kelishilgan",
+        "Involight FM900 DMX Generatori": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "air-freshener-box-100ml": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "100 ml Flakon": "Kelishilgan",
+        "16 dona Korobkada": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "car-perfume-bottles-7g": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "7 gr Shisha Flakon": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "cardboard-air-fresheners": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "1 dona Individual Qadoq": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "spray-air-freshener-375ml": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "375 ml Trigger Sprey": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "item-microfiber-set": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "40x30 sm": "Kelishilgan",
+        "60x30 sm": "Kelishilgan",
+        "60x40 sm": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "item-cloth-guff": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "60x40 sm": "Kelishilgan",
+        "50x70 sm": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "item-paper-mats": {
+      "base_price": "Kelishilgan",
+      "volumes": {
+        "Standart O'lcham (Blokda)": "Kelishilgan"
+      },
+      "in_stock": true
+    },
+    "graff-antifreeze-anamal": {
+      "base_price": "16 000",
+      "volumes": {
+        "-40 KO'K 1 kg": "16 000",
+        "-40 QIZIL 1 kg": "16 500",
+        "-40 KO'K 5 kg": "78 000",
+        "-40 QIZIL 5 kg": "80 000",
+        "-40 KO'K 10 kg": "0",
+        "-40 QIZIL 10 kg": "0",
+        "-40 KO'K 20 kg": "0",
+        "-40 QIZIL 20 kg": "0",
+        "200 kg (bochka)": "0"
+      },
+      "in_stock": true
+    },
+    "graff-nezamerzayka": {
+      "base_price": "0",
+      "volumes": {
+        "1 L (-10°C)": "8000",
+        "2,5 L (-10°C)": "18 000",
+        "5 L (-10°C)": "0",
+        "1 L (-20°C)": "10000",
+        "2,5 L (-20°C)": "23000",
+        "5 L (-20°C)": "0"
+      },
+      "in_stock": true
+    },
+    "dry-fog-liquids": {
+      "base_price": "100000",
+      "volumes": {
+        "0,5 L": "100000",
+        "1 L": "195 000"
+      },
+      "in_stock": true
+    },
+    "air-freshener-100ml": {
+      "base_price": "18 000",
+      "volumes": {
+        "100 ml Flakon": "18 000",
+        "16 donalik Shouboks": "250 000"
+      },
+      "in_stock": true
+    },
+    "detailing-set-5in1": {
+      "base_price": "16 000",
+      "volumes": {
+        "450 ml Alohida sprey": "16 000",
+        "5 tasi 1 da To'liq Komplekt": "75 000"
+      },
+      "in_stock": true
+    },
+    "spray-glass-cleaner": {
+      "base_price": "14 000",
+      "volumes": {
+        "450 ml": "14 000",
+        "1 ta karobka": "168 000"
+      },
+      "in_stock": true
+    },
+    "spray-polyrole": {
+      "base_price": "16 000",
+      "volumes": {
+        "450 ml Yaltiroq (Shine)": "16 000",
+        "450 ml Mat (Matte)": "16 000",
+        "1 karobka": "192 000"
+      },
+      "in_stock": true
+    },
+    "antifreeze-graff": {
+      "base_price": "16 000",
+      "volumes": {
+        "-40 KO'K 1 kg": "16 000",
+        "-40 QIZIL 1 kg": "16 500",
+        "-40 KO'K 5 kg": "78 000",
+        "-40 QIZIL 5 kg": "80 000",
+        "-40 KO'K 10 kg": "0",
+        "-40 QIZIL 10 kg": "0",
+        "-40 KO'K 20 kg": "0",
+        "-40 QIZIL 20 kg": "0",
+        "200 kg (bochka)": "0"
+      },
+      "in_stock": true
+    }
+  }
+}
