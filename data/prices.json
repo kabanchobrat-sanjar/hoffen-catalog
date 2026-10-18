@@ -1,7 +1,7 @@
 {
   "show_prices_public": true,
   "currency": "UZS",
-  "last_updated": "2026-10-19T00:22:41.363217",
+  "last_updated": "2026-10-19T01:54:44.742680",
   "updated_by": "Admin",
   "contacts": {
     "primary_phone": "+998 97 407 00 64",
@@ -394,11 +394,12 @@
       "in_stock": true
     },
     "shampoo-06-active-foam": {
-      "base_price": "500 000",
+      "base_price": "530 000",
       "volumes": {
         "1 L": "35 000",
         "5 kg": "150 000",
-        "20 kg": "500 000"
+        "20 kg": "530 000",
+        "20KG +06": "530 000"
       },
       "in_stock": true
     },
@@ -706,10 +707,10 @@
       "in_stock": true
     },
     "air-freshener-100ml": {
-      "base_price": "18 000",
+      "base_price": "160000",
       "volumes": {
-        "100 ml Flakon": "18 000",
-        "16 donalik Shouboks": "250 000"
+        "100 ml Flakon": "50000",
+        "16 donalik Shouboks": "160000"
       },
       "in_stock": true
     },
@@ -717,7 +718,7 @@
       "base_price": "16 000",
       "volumes": {
         "450 ml Alohida sprey": "16 000",
-        "5 tasi 1 da To'liq Komplekt": "75 000"
+        "1 karobka": "192 000"
       },
       "in_stock": true
     },

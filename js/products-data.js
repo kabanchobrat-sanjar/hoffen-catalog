@@ -866,11 +866,11 @@ const HOFFEN_DATA = {
         "image": "assets/products/detailing_full_set_ai.jpg",
         "volumes": [
             "450 ml Alohida sprey",
-            "5 tasi 1 da To'liq Komplekt"
+            "1 karobka"
         ],
         "default_prices": {
             "450 ml Alohida sprey": "16 000",
-            "5 tasi 1 da To'liq Komplekt": "75 000"
+            "1 karobka": "192 000"
         },
         "specs": [
             {
@@ -879,14 +879,14 @@ const HOFFEN_DATA = {
                 "val": "Rubber Blacker, Glass, Salon, Polyrole Shine, Matte"
             },
             {
-                "label_uz": "Iqtisodiy foyda",
-                "label_ru": "Экономия",
-                "val": "Komplektda 15% arzonroq"
+                "label_uz": "Qadoqlash",
+                "label_ru": "Упаковка",
+                "val": "1 karobkada 12 dona"
             },
             {
                 "label_uz": "Format",
                 "label_ru": "Формат",
-                "val": "5 x 450 ml ergonomik triggerlar"
+                "val": "450 ml ergonomik triggerlar"
             }
         ],
         "desc_uz": "Avtomobilni to'liq parvarish qilish uchun kerak bo'ladigan barcha flagman spreylar bir joyda: Rezina qoraytirgich, oyna tozalagich, salon interyer kimchistkasi hamda plastik polirovkalar.",
