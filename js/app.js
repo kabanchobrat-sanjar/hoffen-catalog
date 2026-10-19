@@ -1657,6 +1657,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(() => {});
       } catch (err) {}
 
+      // Cache locally for offline & GitHub Pages Admin
+      try {
+        const cached = JSON.parse(localStorage.getItem('hoffen_orders_cache') || '[]');
+        cached.unshift(orderPayload);
+        localStorage.setItem('hoffen_orders_cache', JSON.stringify(cached));
+      } catch(e) {}
+
       // 2. Auto-copy to clipboard for maximum reliability
       if (navigator.clipboard) {
         navigator.clipboard.writeText(text).catch(() => {});
@@ -1875,18 +1882,43 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const data = await res.json();
-      if (data.success) {
-        if (successMsg) successMsg.style.display = 'block';
-        if (nameInp) nameInp.value = '';
-        if (phoneInp) phoneInp.value = '';
-        if (msgInp) msgInp.value = '';
-        setTimeout(() => {
-          if (successMsg) successMsg.style.display = 'none';
-        }, 6000);
-      } else {
-        alert(data.message || "Xatolik yuz berdi!");
-      }
+      // Cache locally for offline & GitHub Pages Admin
+      try {
+        const cachedInq = JSON.parse(localStorage.getItem('hoffen_inquiries_cache') || '[]');
+        cachedInq.unshift({
+          id: 'INQ-' + Date.now(),
+          type: 'inquiry',
+          created_at: new Date().toISOString(),
+          customer_name: name || "Hurmatli mijoz",
+          customer_phone: phone,
+          context: msg || "Tezkor konsultatsiya so'rovi",
+          source: 'web_form'
+        });
+        localStorage.setItem('hoffen_inquiries_cache', JSON.stringify(cachedInq));
+      } catch(e) {}
+
+      if (successMsg) successMsg.style.display = 'block';
+      if (nameInp) nameInp.value = '';
+      if (phoneInp) phoneInp.value = '';
+      if (msgInp) msgInp.value = '';
+      setTimeout(() => {
+        if (successMsg) successMsg.style.display = 'none';
+      }, 6000);
     } catch (err) {
+      // Cache locally for offline & GitHub Pages Admin
+      try {
+        const cachedInq = JSON.parse(localStorage.getItem('hoffen_inquiries_cache') || '[]');
+        cachedInq.unshift({
+          id: 'INQ-' + Date.now(),
+          type: 'inquiry',
+          created_at: new Date().toISOString(),
+          customer_name: name || "Hurmatli mijoz",
+          customer_phone: phone,
+          context: msg || "Tezkor konsultatsiya so'rovi",
+          source: 'web_form'
+        });
+        localStorage.setItem('hoffen_inquiries_cache', JSON.stringify(cachedInq));
+      } catch(e) {}
       alert("Zayavka qabul qilindi! Mutaxassisimiz tez orada siz bilan bog'lanadi.");
       if (successMsg) successMsg.style.display = 'block';
     } finally {

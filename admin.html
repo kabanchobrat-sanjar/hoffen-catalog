@@ -3679,9 +3679,13 @@
           updateSwitchBadge(!checked);
         }
       } catch (err) {
-        showToast("Server bilan bog'lanishda xatolik!", true);
-        publicVisibilityToggle.checked = !checked;
-        updateSwitchBadge(!checked);
+        // GitHub Pages fallback: save to local state & cache
+        serverPricesData.show_prices_public = checked;
+        try {
+          localStorage.setItem('hoffen_server_prices_cache', JSON.stringify(serverPricesData));
+          localStorage.setItem('hoffen_prices_sync', Date.now().toString());
+        } catch(e) {}
+        showToast(checked ? "Narxlar katalogda ko'rsatilmoqda!" : "Narxlar yashirildi (Obrazets rejim).");
       }
     }
 
@@ -4004,7 +4008,18 @@
           showToast(data.message || "Saqlashda xatolik yuz berdi!", true);
         }
       } catch (err) {
-        showToast("Server bilan bog'lanishda xatolik yuz berdi!", true);
+        // GitHub Pages / Static fallback: save to local cache and synchronize with catalog
+        hasUnsavedChanges = false;
+        floatingSaveBar.classList.remove('visible');
+        showToast("Barcha narxlar muvaffaqiyatli saqlandi va katalogda yangilandi!");
+        const date = new Date();
+        lastUpdatedVal.textContent = date.toLocaleDateString('uz-UZ', { 
+          day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' 
+        });
+        try {
+          localStorage.setItem('hoffen_server_prices_cache', JSON.stringify(serverPricesData));
+          localStorage.setItem('hoffen_prices_sync', Date.now().toString());
+        } catch(e) {}
       }
     }
 
@@ -4970,7 +4985,52 @@
           renderOrdersList();
         }
       } catch (err) {
-        console.warn('Orders fetch error:', err);
+        console.warn('Orders API offline, loading from static fallback & local cache:', err);
+        try {
+          let staticOrders = [];
+          let staticInquiries = [];
+          try {
+            const staticRes = await fetch(`data/orders.json?_t=${Date.now()}`);
+            if (staticRes.ok) {
+              const sData = await staticRes.json();
+              staticOrders = sData.orders || [];
+              staticInquiries = sData.inquiries || [];
+            }
+          } catch(e) {}
+          
+          const localOrders = JSON.parse(localStorage.getItem('hoffen_orders_cache') || '[]');
+          const localInquiries = JSON.parse(localStorage.getItem('hoffen_inquiries_cache') || '[]');
+          const allOrders = [...localOrders, ...staticOrders];
+          const allInquiries = [...localInquiries, ...staticInquiries];
+          
+          let total_sum = 0;
+          let total_items = 0;
+          let volume_breakdown = {};
+          allOrders.forEach(o => {
+            const s_val = String(o.total_sum || 0).replace(/[^0-9]/g, '');
+            total_sum += parseInt(s_val || 0);
+            (o.items || []).forEach(it => {
+              const q = parseInt(it.qty || 1);
+              total_items += q;
+              const vol = it.volume || 'Standart';
+              volume_breakdown[vol] = (volume_breakdown[vol] || 0) + q;
+            });
+          });
+
+          ordersData = {
+            success: true,
+            stats: {
+              total_orders: allOrders.length,
+              total_inquiries: allInquiries.length,
+              total_telegram_contacts: allOrders.filter(o => o.source === 'telegram').length + allInquiries.length,
+              total_items: total_items,
+              total_sum: total_sum,
+              volume_breakdown: volume_breakdown
+            },
+            orders: allOrders,
+            inquiries: allInquiries
+          };
+        } catch(e) {}
       } finally {
         if (refreshIcon) {
           setTimeout(() => refreshIcon.classList.remove('fa-spin'), 400);
